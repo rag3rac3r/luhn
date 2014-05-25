@@ -41,7 +41,7 @@ namespace Luhn
             }
             else
             {
-                boxResult.Text = Luhn.LuhnGen(boxBase.Text);
+                boxResult.Text = boxBase.Text + Luhn.LuhnGen(boxBase.Text);
             }
         }
     }
