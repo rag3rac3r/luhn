@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 /****
  * Tests are done against the following numbers:
@@ -18,10 +14,6 @@ namespace LuhnTests
     [TestFixture]
     public class LuhnTests
     {
-        public LuhnTests()
-        {
-        }
-
         #region LuhnVal, Valid
 
         [Test(Description="Valid VISA card")]
