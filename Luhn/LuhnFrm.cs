@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Luhn
@@ -19,23 +14,35 @@ namespace Luhn
         private void button1_Click(object sender, EventArgs e)
         {
             lblValRes.BackColor = Color.Transparent;
-            if (Luhn.LuhnVal(txtVal.Text))
+            if (txtVal.TextLength <= 0)
             {
-                lblValRes.BackColor = Color.Lime;
-                lblValRes.Text = "Valid";
-                //MessageBox.Show("Value is correct");
+                MessageBox.Show("Can not be empty");
             }
             else
             {
-                lblValRes.BackColor = Color.Red;
-                lblValRes.Text = "Invalid";
-                //MessageBox.Show("Value is incorrect");
+                if (Luhn.LuhnVal(txtVal.Text))
+                {
+                    lblValRes.BackColor = Color.Lime;
+                    lblValRes.Text = "Valid";
+                }
+                else
+                {
+                    lblValRes.BackColor = Color.Red;
+                    lblValRes.Text = "Invalid";
+                }
             }
         }
 
         private void btnGen_Click(object sender, EventArgs e)
         {
-            boxResult.Text = Luhn.LuhnGen(boxBase.Text);
+            if (boxBase.TextLength <= 0)
+            {
+                MessageBox.Show("Cannot be empty");
+            }
+            else
+            {
+                boxResult.Text = Luhn.LuhnGen(boxBase.Text);
+            }
         }
     }
 }

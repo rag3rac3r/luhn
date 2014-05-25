@@ -33,8 +33,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.txtVal = new System.Windows.Forms.TextBox();
-            this.tabLuhnGen = new System.Windows.Forms.TabPage();
             this.lblValRes = new System.Windows.Forms.Label();
+            this.tabLuhnGen = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.boxBase = new System.Windows.Forms.TextBox();
             this.boxResult = new System.Windows.Forms.TextBox();
@@ -103,6 +103,15 @@
             this.txtVal.Size = new System.Drawing.Size(326, 20);
             this.txtVal.TabIndex = 0;
             // 
+            // lblValRes
+            // 
+            this.lblValRes.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblValRes.Location = new System.Drawing.Point(3, 50);
+            this.lblValRes.Name = "lblValRes";
+            this.lblValRes.Size = new System.Drawing.Size(326, 23);
+            this.lblValRes.TabIndex = 2;
+            this.lblValRes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tabLuhnGen
             // 
             this.tabLuhnGen.Controls.Add(this.tableLayoutPanel2);
@@ -113,16 +122,6 @@
             this.tabLuhnGen.TabIndex = 1;
             this.tabLuhnGen.Text = "Generate";
             this.tabLuhnGen.UseVisualStyleBackColor = true;
-            // 
-            // lblValRes
-            // 
-            this.lblValRes.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblValRes.Location = new System.Drawing.Point(3, 50);
-            this.lblValRes.Name = "lblValRes";
-            this.lblValRes.Size = new System.Drawing.Size(326, 23);
-            this.lblValRes.TabIndex = 2;
-            this.lblValRes.Text = "sdgdfgdfg";
-            this.lblValRes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
             // 

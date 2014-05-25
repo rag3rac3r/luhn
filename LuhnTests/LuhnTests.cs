@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 /****
  * Tests are done against the following numbers:
@@ -14,6 +15,33 @@ namespace LuhnTests
     [TestFixture]
     public class LuhnTests
     {
+        // Empty string
+        [Test(Description = "Test empty string to Something")]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestLuhnValEmpty()
+        {
+            Luhn.Luhn.LuhnVal("");
+        }
+
+        [Test(Description = "Test empty string to LuhnGen")]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestLuhngenEmpty()
+        {
+            Luhn.Luhn.LuhnGen("");
+        }
+
+        [Test(Description = "Test Reverse")]
+        public void TestReverse()
+        {
+            StringAssert.IsMatch(Luhn.Luhn.Reverse("abcdef"), "fedcba", "Reverse string");
+        }
+
+        [Test(Description = "Test Cleaner")]
+        public void TestCleaner()
+        {
+            StringAssert.IsMatch(Luhn.Luhn.Clean("a1b2c3d4"), "1234", "Clean string");
+        }
+
         #region LuhnVal, Valid
 
         [Test(Description="Valid VISA card")]
