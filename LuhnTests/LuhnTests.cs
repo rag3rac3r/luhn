@@ -33,12 +33,15 @@ namespace LuhnTests
 
         #region LuhnVal
 
-        [Test(Description = "Test if LuhnVal throws exception on empty parameter")]
+        [TestCase("", Description="Empty string", TestName="Empty string")]
+        [TestCase("abcdef", Description = "String with no digits", TestName = "No digits")]
+        [TestCase("1", Description = "To small (one digit)", TestName = "To small (one digit)")]
+        [TestCase("a1", Description = "To small (one digit + one alphanumeric", TestName = "To small (one digit + one alphanumeric")]
         [Category("Validator")]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void LuhnValEmptyParameter()
+        public void LuhnValEmptyOrToSmall(string valid)
         {
-            Luhn.Luhn.LuhnVal("");
+            Luhn.Luhn.LuhnVal(valid);
         }
 
         [Test(Description="Valid VISA card")]
@@ -97,12 +100,13 @@ namespace LuhnTests
 
         #region LuhnGen
         
-        [Test(Description = "Test empty string to LuhnGen")]
+        [TestCase("", Description="Empty string", TestName="Empty string sent to LuhnGen")]
+        [TestCase("abcd", Description = "No digits", TestName = "No digits in string sent to LuhnGen")]
         [Category("Generator")]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestLuhngenEmpty()
+        public void TestLuhngenEmpty(string generate)
         {
-            Luhn.Luhn.LuhnGen("");
+            Luhn.Luhn.LuhnGen(generate);
         }
 
         [Test(Description="Generate VISA card checksum")]
