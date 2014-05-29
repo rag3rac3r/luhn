@@ -7,7 +7,13 @@ namespace Luhn
     {
         public static bool LuhnVal(string verify)
         {
-            string val = Clean(Reverse(verify.Substring(0, verify.Length - 1)));
+            verify = Clean(verify);
+            if (verify.Length <= 1)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            string val = Reverse(verify.Substring(0, verify.Length - 1));
             int sum = 0;
 
             for (int i = 0; i < val.Length; i++)
@@ -32,11 +38,12 @@ namespace Luhn
 
         public static string LuhnGen(string generate)
         {
-            if (generate.Length == 0)
+            string val = Clean(Reverse(generate));
+            if (val.Length == 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
-            string val = Clean(Reverse(generate));
+
             int sum = 0;
 
             for (int i = 0; i < val.Length; i++)
@@ -58,6 +65,7 @@ namespace Luhn
         }
 
         #region Utils
+
         public static string Clean(string dirty)
         {
             if (dirty == null)
@@ -81,6 +89,7 @@ namespace Luhn
             Array.Reverse(array);
             return new String(array);
         }
+
         #endregion
     }
 }
