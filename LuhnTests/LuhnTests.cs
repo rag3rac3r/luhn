@@ -78,7 +78,7 @@ namespace LuhnTests
             Assert.IsFalse(Luhn.Luhn.LuhnVal(number), msg);
         }
 
-        [Test(Description = "Test validatoin of Bankgiro numbers (valid)")]
+        [Test(Description = "Test validation of Bankgiro numbers (valid)")]
         [Category("Validator")]
         [TestCase("181-0993", "Valid bankgiro number for Försäkringskassa")]
         [TestCase("785-8426", "Valid bankgiro number for SJ")]

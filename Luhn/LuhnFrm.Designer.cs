@@ -31,15 +31,16 @@
             this.tabLuhn = new System.Windows.Forms.TabControl();
             this.tabLuhnVal = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtVal = new System.Windows.Forms.TextBox();
             this.lblValRes = new System.Windows.Forms.Label();
+            this.txtVal = new System.Windows.Forms.TextBox();
+            this.lblValueToCheck = new System.Windows.Forms.Label();
+            this.btnVal = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.tabLuhnGen = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.boxBase = new System.Windows.Forms.TextBox();
             this.boxResult = new System.Windows.Forms.TextBox();
             this.btnGen = new System.Windows.Forms.Button();
-            this.lblValueToCheck = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabLuhn.SuspendLayout();
@@ -73,12 +74,15 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 3);
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableLayoutPanel1.Controls.Add(this.lblValRes, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtVal, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblValueToCheck, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnVal, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnClear, 2, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -90,33 +94,56 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(340, 138);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Location = new System.Drawing.Point(132, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Validate";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtVal
-            // 
-            this.txtVal.AcceptsReturn = true;
-            this.txtVal.Location = new System.Drawing.Point(3, 23);
-            this.txtVal.Name = "txtVal";
-            this.txtVal.Size = new System.Drawing.Size(334, 20);
-            this.txtVal.TabIndex = 0;
-            // 
             // lblValRes
             // 
             this.lblValRes.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblValRes, 3);
             this.lblValRes.Location = new System.Drawing.Point(3, 65);
             this.lblValRes.Name = "lblValRes";
             this.lblValRes.Size = new System.Drawing.Size(334, 23);
             this.lblValRes.TabIndex = 2;
             this.lblValRes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtVal
+            // 
+            this.txtVal.AcceptsReturn = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.txtVal, 3);
+            this.txtVal.Location = new System.Drawing.Point(3, 23);
+            this.txtVal.Name = "txtVal";
+            this.txtVal.Size = new System.Drawing.Size(334, 20);
+            this.txtVal.TabIndex = 0;
+            this.txtVal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVal_KeyDown);
+            // 
+            // lblValueToCheck
+            // 
+            this.lblValueToCheck.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblValueToCheck, 3);
+            this.lblValueToCheck.Location = new System.Drawing.Point(3, 0);
+            this.lblValueToCheck.Name = "lblValueToCheck";
+            this.lblValueToCheck.Size = new System.Drawing.Size(92, 13);
+            this.lblValueToCheck.TabIndex = 3;
+            this.lblValueToCheck.Text = "Number to check:";
+            // 
+            // btnVal
+            // 
+            this.btnVal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVal.Location = new System.Drawing.Point(75, 99);
+            this.btnVal.Name = "btnVal";
+            this.btnVal.Size = new System.Drawing.Size(75, 23);
+            this.btnVal.TabIndex = 1;
+            this.btnVal.Text = "&Validate";
+            this.btnVal.UseVisualStyleBackColor = true;
+            this.btnVal.Click += new System.EventHandler(this.btnVal_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(190, 99);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 4;
+            this.btnClear.Text = "&Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // tabLuhnGen
             // 
@@ -156,6 +183,7 @@
             this.boxBase.Name = "boxBase";
             this.boxBase.Size = new System.Drawing.Size(326, 20);
             this.boxBase.TabIndex = 0;
+            this.boxBase.KeyDown += new System.Windows.Forms.KeyEventHandler(this.boxBase_KeyDown);
             // 
             // boxResult
             // 
@@ -173,18 +201,9 @@
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(75, 23);
             this.btnGen.TabIndex = 2;
-            this.btnGen.Text = "Generate";
+            this.btnGen.Text = "&Generate";
             this.btnGen.UseVisualStyleBackColor = true;
             this.btnGen.Click += new System.EventHandler(this.btnGen_Click);
-            // 
-            // lblValueToCheck
-            // 
-            this.lblValueToCheck.AutoSize = true;
-            this.lblValueToCheck.Location = new System.Drawing.Point(3, 0);
-            this.lblValueToCheck.Name = "lblValueToCheck";
-            this.lblValueToCheck.Size = new System.Drawing.Size(92, 13);
-            this.lblValueToCheck.TabIndex = 3;
-            this.lblValueToCheck.Text = "Number to check:";
             // 
             // label1
             // 
@@ -214,7 +233,7 @@
             this.MaximizeBox = false;
             this.Name = "LuhnFrm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Luhn";
+            this.Text = "Luhn Validator/Generator";
             this.tabLuhn.ResumeLayout(false);
             this.tabLuhnVal.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -231,7 +250,7 @@
         private System.Windows.Forms.TabControl tabLuhn;
         private System.Windows.Forms.TabPage tabLuhnVal;
         private System.Windows.Forms.TabPage tabLuhnGen;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVal;
         private System.Windows.Forms.TextBox txtVal;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblValRes;
@@ -242,6 +261,7 @@
         private System.Windows.Forms.Label lblValueToCheck;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
